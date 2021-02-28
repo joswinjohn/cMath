@@ -10,50 +10,87 @@ namespace Calculator
 {
     class Program
     {
-        static void Main(string[] args)
+        //Request Function 1
+        public static double Request1()
         {
         Start:
             Console.Clear();
-
-            string n1b, n2b;
-            double n1 = 0.0;
-            double n2 = 0.0;
-
+            
             Console.WriteLine("Type your First Number...");
+            string n1b = Console.ReadLine();
 
-            n1b = Console.ReadLine();
+            //process first num
+            double n1 = 0.0;
+
             bool isNumeric = double.TryParse(n1b, out _);
             bool isEquation = n1b.Contains("+") || n1b.Contains("-") || n1b.Contains("*") || n1b.Contains("/");
 
-            if (isEquation == true) {
+            if (isEquation == true)
+            {
+                //if the arg is an equation go back to ReqStart
                 Console.WriteLine("Please enter a number(Not an equation)");
                 Thread.Sleep(2000);
                 goto Start;
-            } else if(isNumeric == true && isEquation == false) {
+            }
+            else if (isNumeric == true && isEquation == false)
+            {
                 n1 = Convert.ToDouble(n1b);
                 Console.Clear();
-            }else {
+            }
+            else
+            {
+                //if the arg isn't an equation or a number
                 Console.WriteLine("Enter a real number");
                 Thread.Sleep(1000);
                 Console.Clear();
                 goto Start;
             }
+            return n1;
+        }
+
+        //Request Function 2
+        public static double Request2()
+        {
+        Start:
+            Console.Clear();
 
             Console.WriteLine("Type your Second Number... (Type any random number to use sqrt function)");
+            string n2b = Console.ReadLine();
 
-            n2b = Console.ReadLine();
+            //process second num
+            double n2 = 0.0;
+            
             bool isNumeric2 = double.TryParse(n2b, out _);
+            bool isEquation2 = n2b.Contains("+") || n2b.Contains("-") || n2b.Contains("*") || n2b.Contains("/");
 
-            if (isNumeric2 == true)
+            if (isEquation2 == true)
+            {
+                Console.WriteLine("Please enter a number(Not an equation)");
+                Thread.Sleep(2000);
+                goto Start;
+            }
+            else if (isNumeric2 == true && isEquation2 == false)
             {
                 n2 = Convert.ToDouble(n2b);
                 Console.Clear();
-            } else
+            }
+            else
             {
+                Console.WriteLine("Enter a real number");
+                Thread.Sleep(1000);
                 Console.Clear();
                 goto Start;
             }
+            return n2;
+        }
+        
+        static void Main(string[] args)
+        {
+        Start:
+            //clear the console when calling "goto Start;"
+            Console.Clear();
 
+            //expaination
             Console.WriteLine("Choose an Operation:");
             Console.WriteLine("a = add");
             Console.WriteLine("s = subtract");
@@ -66,79 +103,74 @@ namespace Calculator
             switch (Console.ReadLine())
             {
                 case "a":
-                    double a = Functions.Add(n1, n2);
-                    if (a == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(a);
-                    }
+                    Console.Clear();
+                    
+                    //call and run request functions
+                    double wrt1 = Request1();
+                    double wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Add(wrt1, wrt2));
+
                     break;
                 case "s":
-                    double s = Functions.Subtract(n1, n2);
-                    if (s == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(s);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+                    wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Subtract(wrt1, wrt2));
+
                     break;
                 case "m":
-                    double m = Functions.Multiply(n1, n2);
-                    if (m == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(m);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+                    wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Multiply(wrt1, wrt2));
+
                     break;
                 case "d":
-                    double d = Functions.Divide(n1, n2);
-                    if (d == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(d);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+                    wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Divide(wrt1, wrt2));
+
                     break;
                 case "mod":
-                    double mod = Functions.Modulo(n1, n2);
-                    if (mod == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(mod);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+                    wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Modulo(wrt1, wrt2));
+
                     break;
                 case "sqrt":
-                    double sqrt = Functions.Sqroot(n1);
-                    if (sqrt == Convert.ToDouble("∞"))
-                    {
-                        Console.WriteLine("Number is too high");
-                    }
-                    else
-                    {
-                        Console.WriteLine(sqrt);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Sqroot(wrt1));
+
                     break;
                 case "pow":
-                    double pow = Functions.Power(n1, n2);
-                    if (pow == Convert.ToDouble("∞")) {
-                        Console.WriteLine("Number is too high");
-                    } else
-                    {
-                        Console.WriteLine(pow);
-                    }
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+                    wrt2 = Request2();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Power(wrt1, wrt2));
+
                     break;
             }
 
@@ -146,6 +178,7 @@ namespace Calculator
             Console.WriteLine("Press any other key to close the Console");
             if(Console.ReadKey(true).Key == ConsoleKey.E)
             {
+
                 Console.Clear();
                 goto Start;
             }
