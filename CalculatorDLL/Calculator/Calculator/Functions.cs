@@ -43,7 +43,6 @@ namespace Calculator
             return Math.Pow(num1, num2);
         }
 
-
         public static double Round(double num1)
         {
             return Math.Round(num1);
