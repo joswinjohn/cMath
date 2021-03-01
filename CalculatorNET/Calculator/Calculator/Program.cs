@@ -23,16 +23,8 @@ namespace Calculator
             double n1 = 0.0;
 
             bool isNumeric = double.TryParse(n1b, out _);
-            bool isEquation = n1b.Contains("+") || n1b.Contains("-") || n1b.Contains("*") || n1b.Contains("/");
 
-            if (isEquation == true)
-            {
-                //if the arg is an equation go back to ReqStart
-                Console.WriteLine("Please enter a number(Not an equation)");
-                Thread.Sleep(2000);
-                goto Start;
-            }
-            else if (isNumeric == true && isEquation == false)
+            if (isNumeric == true)
             {
                 n1 = Convert.ToDouble(n1b);
                 Console.Clear();
@@ -61,15 +53,8 @@ namespace Calculator
             double n2 = 0.0;
             
             bool isNumeric2 = double.TryParse(n2b, out _);
-            bool isEquation2 = n2b.Contains("+") || n2b.Contains("-") || n2b.Contains("*") || n2b.Contains("/");
 
-            if (isEquation2 == true)
-            {
-                Console.WriteLine("Please enter a number(Not an equation)");
-                Thread.Sleep(2000);
-                goto Start;
-            }
-            else if (isNumeric2 == true && isEquation2 == false)
+            if (isNumeric2 == true)
             {
                 n2 = Convert.ToDouble(n2b);
                 Console.Clear();
@@ -96,6 +81,9 @@ namespace Calculator
             Console.WriteLine("s = subtract");
             Console.WriteLine("m = multiply");
             Console.WriteLine("d = divide");
+            Console.WriteLine("r = round | rounds to the closest interger");
+            Console.WriteLine("cos = gets the cos of the number");
+            Console.WriteLine("sin = gets the sine of the number");
             Console.WriteLine("mod = modulus | remainder of num1 / num2");
             Console.WriteLine("sqrt = sqare root | square root of num1");
             Console.WriteLine("pow = Power | num1 ^ num2");
@@ -170,6 +158,42 @@ namespace Calculator
 
                     //run Calculator.Functions.cs operator function and Write Line
                     Console.WriteLine(Functions.Power(wrt1, wrt2));
+
+                    break;
+                case "r":
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Round(wrt1));
+
+                    break;
+                case "cel":
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Celling(wrt1));
+
+                    break;
+                case "cos":
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Cos(wrt1));
+
+                    break;
+                case "sin":
+                    Console.Clear();
+                    //call and run request functions
+                    wrt1 = Request1();
+
+                    //run Calculator.Functions.cs operator function and Write Line
+                    Console.WriteLine(Functions.Sin(wrt1));
 
                     break;
             }

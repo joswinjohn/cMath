@@ -48,17 +48,17 @@ namespace Calculator
             return Math.Round(num1);
         }
 
-        public static double cel(double num1)
+        public static double Celling(double num1)
         {
             return Math.Ceiling(num1);
         }
 
-        public static double cos(double num1)
+        public static double Cos(double num1)
         {
             return Math.Cos(num1);
         }
 
-        public static double sin(double num1)
+        public static double Sin(double num1)
         {
             return Math.Sin(num1);
         }
