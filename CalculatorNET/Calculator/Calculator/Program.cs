@@ -87,6 +87,9 @@ namespace Calculator
             Console.WriteLine("mod = modulus | remainder of num1 / num2");
             Console.WriteLine("sqrt = sqare root | square root of num1");
             Console.WriteLine("pow = Power | num1 ^ num2");
+            Console.WriteLine("cel = ceiling");
+            Console.WriteLine("cos = co sine");
+            Console.WriteLine("sin = sine");
 
             switch (Console.ReadLine())
             {
